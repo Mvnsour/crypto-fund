@@ -39,11 +39,17 @@ uint256 public minUsd = 5;
          /* The ETH price of $2,935.29 is properly converted to wei (2,935,290,000,000,000,000)
         Multiplying by 1e10 converts it back to ETH units
         The comment is accurate and helpful */
-         
+        
     }
 
-    function getConversionRate() public {
-
+    function getConversionRate(uint256 ethAmount) public view returns(uint256) {
+        // How much 1 ETH worth?
+        // 2935_29000000000000000
+        uint256 ethPrice = getPrice();
+        // (2935_29000000000000000 * 1_000000000000000000) / 1000000000000000000
+        // $2935.2 = 1 ETH
+        uint256 ethAmountInUsd = (ethPrice * ethAmount) / 1e18;
+        return ethAmountInUsd;
     }
 
     function getVersion() public view returns (uint256) {
