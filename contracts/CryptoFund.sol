@@ -12,8 +12,8 @@ contract CryptoFund {
     using PriceConverter for uint256;
 
     uint256 public minUsd = 5e18; // we can also write 5 * 1e18, 5 * (10 ** 18)
-    // Array to store addresses of all funders
-    address[] public funders;
+    
+    address[] public funders; // Array to store addresses of all funders
 
     // Mapping to track how much each funder has contributed (address => amount)
     mapping(address funder => uint256 amountFunded) public addressToAmountFunded;
@@ -38,8 +38,10 @@ contract CryptoFund {
     }
 
     function withdraw() public {
-        
+        for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
+            address funder = funders[funderIndex];
+            addressToAmountFunded[funder] = 0;
+        }
     }
 
-    
 }

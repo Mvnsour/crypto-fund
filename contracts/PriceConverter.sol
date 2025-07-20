@@ -38,7 +38,6 @@ library PriceConverter {
         return AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306).version();
     }
 
-
     /* if we want the opposite (USD in ETH) we can do that
     function convertUsdToEth(uint256 usdAmount, uint256 ethPrice) internal pure returns(uint256) {
         uint256 ethAmount = (usdAmount * 1e18) / ethPrice;
