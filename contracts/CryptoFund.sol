@@ -42,6 +42,17 @@ contract CryptoFund {
             address funder = funders[funderIndex];
             addressToAmountFunded[funder] = 0;
         }
+
+        funders = new address[](0); // reset the array to empty
+        // actually withdraw the funds with 3 differents ways
+        // transfer
+        // payable(msg.sender).transfer(address(this).balance); // msg.sender = address | payable(msg.sender) = payable address
+        // send
+        // bool sent = payable(msg.sender).send(address(this).balance);
+        // require(sent, "Failed to send Ether");
+        // call
+        (bool success,) = payable(msg.sender).call{value: address(this).balance}("");
+        require(success, "Failed to send Ether");
     }
 
 }
