@@ -15,6 +15,12 @@ contract CryptoFund {
     
     address[] public funders; // Array to store addresses of all funders
 
+    address public owner;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
     // Mapping to track how much each funder has contributed (address => amount)
     mapping(address funder => uint256 amountFunded) public addressToAmountFunded;
     mapping(address funder => uint256 amountContributed) public contributionCounter;
@@ -38,6 +44,7 @@ contract CryptoFund {
     }
 
     function withdraw() public {
+        require(msg.sender == owner, "You must be the owner");
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
             address funder = funders[funderIndex];
             addressToAmountFunded[funder] = 0;
