@@ -43,8 +43,7 @@ contract CryptoFund {
         ++contributionCounter[msg.sender];
     }
 
-    function withdraw() public {
-        require(msg.sender == owner, "You must be the owner");
+    function withdraw() public onlyOwner {
         for (uint256 funderIndex = 0; funderIndex < funders.length; funderIndex++) {
             address funder = funders[funderIndex];
             addressToAmountFunded[funder] = 0;
@@ -60,6 +59,12 @@ contract CryptoFund {
         // call
         (bool success,) = payable(msg.sender).call{value: address(this).balance}("");
         require(success, "Failed to send Ether");
+    }
+
+    modifier onlyOwner() {
+        // if _ is above that means 'we execute the code first
+        require(msg.sender == owner, "You must be the owner");
+        _; // _ is a placeholder for the rest of the function
     }
 
 }
