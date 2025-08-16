@@ -13,6 +13,7 @@ import {PriceConverter} from "./PriceConverter.sol";
 // 838,512 after adding constant keyword
 
 error NotOwner();
+error NoFunder();
 
 contract CryptoFund {
 
@@ -47,6 +48,7 @@ contract CryptoFund {
     }
 
     function fund() public payable {
+        if (msg.sender == address(0)) { revert NoFunder(); }
         // Allow user to send $
         // Have a minimum $ sent
         // To send ETH to this contract
