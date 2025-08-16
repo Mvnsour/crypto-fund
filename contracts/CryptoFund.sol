@@ -7,18 +7,33 @@ pragma solidity ^0.8.0;
 
 import {PriceConverter} from "./PriceConverter.sol";
 
+//constant & immutable
+
+// transaction cost 858,861 gas to deploy this contract
+// 838,512 after adding constant keyword
+
 contract CryptoFund {
 
     using PriceConverter for uint256;
 
-    uint256 public minUsd = 5e18; // we can also write 5 * 1e18, 5 * (10 ** 18)
+    uint256 public MINIMUM_USD = 5e18; // we can also write 5 * 1e18, 5 * (10 ** 18) | by convention we write in capital
+    // execution cost 
+    // 325 gas - constant
+    // 2,424 gas - non-constant
+    // 325 * 196000000 = 63,700,000,000 = 0.0002820029 that's $0.02
+    // 2,424 * 196000000 = 475,104,000,000 = 0.002103503608 that's $0.21
+
+    //  * 183000000 = 133,629,072,000 gas price
     
     address[] public funders; // Array to store addresses of all funders
 
-    address public owner;
+    address public immutable i_owner; // by convention we write 'i_' before the variable name
+    //execution cost
+    // 417 gas - immutable
+    // 2,552 gas - non-immutable
 
     constructor() {
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     // Mapping to track how much each funder has contributed (address => amount)
@@ -34,7 +49,7 @@ contract CryptoFund {
         // Have a minimum $ sent
         // To send ETH to this contract
         //if the condition is false, revert with the error message
-        require(msg.value.getConversionRate() >= minUsd, "didn't send enough ETH"); //1e18 = 1 ETH = 1000000000000000000 = 1 * 10 **(18)
+        require(msg.value.getConversionRate() >= MINIMUM_USD, "didn't send enough ETH"); //1e18 = 1 ETH = 1000000000000000000 = 1 * 10 **(18)
         // Add sender to funders array if not already present
         funders.push(msg.sender);
         // Update the amount funded by this sender
@@ -63,7 +78,7 @@ contract CryptoFund {
 
     modifier onlyOwner() {
         // if _ is above that means 'we execute the code first
-        require(msg.sender == owner, "You must be the owner");
+        require(msg.sender == i_owner, "You must be the owner");
         _; // _ is a placeholder for the rest of the function
     }
 
