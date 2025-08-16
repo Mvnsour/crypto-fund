@@ -12,6 +12,8 @@ import {PriceConverter} from "./PriceConverter.sol";
 // transaction cost 858,861 gas to deploy this contract
 // 838,512 after adding constant keyword
 
+error NotOwner();
+
 contract CryptoFund {
 
     using PriceConverter for uint256;
@@ -78,7 +80,8 @@ contract CryptoFund {
 
     modifier onlyOwner() {
         // if _ is above that means 'we execute the code first
-        require(msg.sender == i_owner, "You must be the owner");
+        // require(msg.sender == i_owner, "You must be the owner");
+        if (msg.sender == i_owner) { revert NotOwner(); } // more gas efficient
         _; // _ is a placeholder for the rest of the function
     }
 
