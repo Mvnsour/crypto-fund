@@ -32,9 +32,11 @@ Move from Remix to a local development environment (Foundry/Hardhat) and explore
 - Yul & assembly
 
 ### 📂 Project Structure
-/contracts
-├── FundMe.sol # Main crowdfunding contract
-├── PriceConverter.sol # Library for value conversion
+
+    /contracts
+        ├── FundMe.sol **Main crowdfunding contract**
+        └── PriceConverter.sol **Library for value conversion**
+
 
 
 # FR
@@ -71,6 +73,7 @@ Migration vers un environnement local (Foundry/Hardhat) avec intégration de con
 - Yul & assembly
 
 ### 📂 Structure du projet
-/contracts
-├── FundMe.sol # Contrat principal
-├── PriceConverter.sol # Librairie pour conversion de valeur
+
+    /contracts
+        ├── FundMe.sol **Contrat principal**
+        └── PriceConverter.sol **Librairie pour conversion de valeur**
