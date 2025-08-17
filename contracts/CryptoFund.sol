@@ -87,4 +87,12 @@ contract CryptoFund {
         _; // _ is a placeholder for the rest of the function
     }
 
+    receive() external payable { 
+        fund();
+    }
+
+    fallback() external payable { 
+        fund();
+    }
+
 }
