@@ -34,8 +34,8 @@ Move from Remix to a local development environment (Foundry/Hardhat) and explore
 ### 📂 Project Structure
 
     /contracts
-        ├── FundMe.sol **Main crowdfunding contract**
-        └── PriceConverter.sol **Library for value conversion**
+        ├── FundMe.sol # Main crowdfunding contract
+        └── PriceConverter.sol # Library for value conversion
 
 
 
@@ -75,5 +75,5 @@ Migration vers un environnement local (Foundry/Hardhat) avec intégration de con
 ### 📂 Structure du projet
 
     /contracts
-        ├── FundMe.sol **Contrat principal**
-        └── PriceConverter.sol **Librairie pour conversion de valeur**
+        ├── FundMe.sol # Contrat principal
+        └── PriceConverter.sol # Librairie pour conversion de valeur
