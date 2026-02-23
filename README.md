@@ -1,10 +1,10 @@
 # EN
 
-## FundMe - Decentralized Crowdfunding Contract
+## Crypto Fund - Decentralized Crowdfunding Contract
 
 ### Description
 Only the contract owner can withdraw collected funds. The project replicates the idea of **Kickstarter**, but fully **on-chain**.
-FundMe is a **decentralized crowdfunding smart contract** where users can send native blockchain tokens (ETH, MATIC, AVAX, etc.) with a **minimum contribution threshold set in USD**.  
+Crypto Fund is a **decentralized crowdfunding smart contract** where users can send native blockchain tokens (ETH, MATIC, AVAX, etc.) with a **minimum contribution threshold set in USD**.  
 
 ### Features
 - Payable `fund` function with enforced USD minimum.
@@ -49,10 +49,10 @@ Move from Remix to a local development environment (Foundry/Hardhat) and explore
 
 # FR
 
-## FundMe - Contrat de Crowdfunding Décentralisé
+## Crypto Fund - Contrat de Crowdfunding Décentralisé
 
 ### Description
-FundMe est un **contrat de financement participatif décentralisé** permettant à des utilisateurs d’envoyer des cryptomonnaies natives (ETH, MATIC, AVAX, etc.) au contrat, avec un **montant minimum fixé en USD**.  
+Crypto Fund est un **contrat de financement participatif décentralisé** permettant à des utilisateurs d’envoyer des cryptomonnaies natives (ETH, MATIC, AVAX, etc.) au contrat, avec un **montant minimum fixé en USD**.  
 Seul le propriétaire peut retirer les fonds collectés. Le projet reprend le principe de plateformes comme **Kickstarter**, mais en version **on-chain**.
 
 ### Fonctionnalités
